@@ -7,12 +7,16 @@
         mc:Ignorable="d"
         Title="Окно входа" Height="200" Width="300" MinHeight="200" MinWidth="300">
 
+    <!--Стакпанель для размещния элементов по вертикальи (сверху вниз) с отступом 10 ед. и выравниванием по вертикали по центру -->
     <StackPanel Orientation="Vertical" Margin="10" VerticalAlignment="Center">
 
+        <!--Текстовая надпись для отображения какого-либо из тестов-->
         <TextBlock x:Name="TestTextBlock" Text="TEMPLATE" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
 
+        <!--Тексовое поле для воода результата-->
         <TextBox x:Name="KeyCodeTextBox" Margin="10"/>
 
+        <!--Кнопка для проверки результата и перехода на новое окно-->
         <Button x:Name="LoginButton" Content="Войти" Margin="10" Click="LoginButton_Click"/>
 
     </StackPanel>

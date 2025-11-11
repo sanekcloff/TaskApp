@@ -21,6 +21,17 @@ namespace TaskApp.Views
         {
             ObjectivesListView.ItemsSource = _ctx.Objectives.Include(obj => obj.Category).ToList();
         }
-        
+
+        private void AddObjectiveButton_Click(object sender, RoutedEventArgs e)
+        {
+            new ObjectiveManageWindow(null,_ctx).ShowDialog();
+            ReloadList();
+        }
+
+        private void ListViewItem_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            new ObjectiveManageWindow((Objective)ObjectivesListView.SelectedItem,_ctx).ShowDialog();
+            ReloadList();
+        }
     }
 }

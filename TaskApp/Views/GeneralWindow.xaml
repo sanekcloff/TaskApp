@@ -9,8 +9,23 @@
     
     <Grid>
 
-        <ListView x:Name="ObjectivesListView" Margin="10">
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5">
+
+            <Button x:Name="AddObjectiveButton" Content="Добавить" Click="AddObjectiveButton_Click"/>
+
+        </StackPanel>
+
+        <ListView x:Name="ObjectivesListView" Margin="10" Grid.Row="1">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
 
     </Grid>
