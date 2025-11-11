@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TaskApp.Views"
         mc:Ignorable="d"
         Title="ObjectiveManageWindow" Height="550" Width="600">
-    
+    <!--Стак панель для расположения всех необходимых полей для создания Objective-->
     <StackPanel Orientation="Vertical" Margin="15" VerticalAlignment="Center">
 
         <TextBlock Text="Название" Margin="10,10,10,2"/>
@@ -26,6 +26,7 @@
         <TextBlock Text="Категория" Margin="10,10,10,2"/>
         <ComboBox x:Name="CategoryComboBox" Margin="10,2,10,10"/>
 
+        <!--Кнопка для добавления/редактирования задачи-->
         <Button x:Name="ActionButton" Margin="10" Content="Action" Click="ActionButton_Click"/>
 
     </StackPanel>

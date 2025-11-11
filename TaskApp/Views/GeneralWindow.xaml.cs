@@ -17,17 +17,19 @@ namespace TaskApp.Views
             _ctx = new AppDbContext(); 
             ReloadList();
         }
+        //мето для присовения листу на форме значений из БД
         private void ReloadList()
         {
             ObjectivesListView.ItemsSource = _ctx.Objectives.Include(obj => obj.Category).ToList();
         }
-
+        // метод для открытия окна добвления
         private void AddObjectiveButton_Click(object sender, RoutedEventArgs e)
         {
             new ObjectiveManageWindow(null,_ctx).ShowDialog();
             ReloadList();
         }
 
+        // метод для открытия окна редактирования
         private void ListViewItem_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             new ObjectiveManageWindow((Objective)ObjectivesListView.SelectedItem,_ctx).ShowDialog();

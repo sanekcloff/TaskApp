@@ -6,23 +6,28 @@
         xmlns:local="clr-namespace:TaskApp.Views"
         mc:Ignorable="d"
         Title="GeneralWindow" Height="450" Width="800">
-    
+    <!--Элемент для расположения объектов по столбацм и строкам-->
     <Grid>
 
+        <!--Создание двух строк разной высоты-->
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <!--Стак панель для размешения внутри определённого количества элементов друг за другом по горизонтали-->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5">
 
+            <!--Метод для вызова окна добавления-->
             <Button x:Name="AddObjectiveButton" Content="Добавить" Click="AddObjectiveButton_Click"/>
 
         </StackPanel>
 
+        <!--Элемент для отображения списка задач (objectives)-->
         <ListView x:Name="ObjectivesListView" Margin="10" Grid.Row="1">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
+                    <!--Событие при нажатии на элемент в списке-->
                     <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
                 </Style>
             </ListView.ItemContainerStyle>

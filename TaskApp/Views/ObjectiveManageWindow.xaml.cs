@@ -26,6 +26,8 @@ namespace TaskApp.Views
         private List<Category> _categories;
         private Objective _objective;
         private AppDbContext _ctx;
+
+        // инициализациия значений в переменных и определение контекста для окна исходя из значения присланого в параметр objective
         public ObjectiveManageWindow(Objective? objective, AppDbContext ctx)
         {
             InitializeComponent();
@@ -77,7 +79,7 @@ namespace TaskApp.Views
                 }
             }
         }
-
+        // метод для добавления\редактирования задачи в бд в зависимости от контекста использования окна
         private void ActionButton_Click(object sender, RoutedEventArgs e)
         {
             if (_isAdd)
@@ -89,6 +91,7 @@ namespace TaskApp.Views
                 _objective.CategoryId = ((Category)CategoryComboBox.SelectedValue).Id;
                 _objective.Priority = (Priority)PriorityComboBox.SelectedIndex;
 
+                // так как создавался новый экземпляр то вызываем метод Add
                 _ctx.Objectives.Add(_objective);
                 _ctx.SaveChanges();
                 this.Close();
@@ -102,6 +105,7 @@ namespace TaskApp.Views
                 _objective.Category = (Category)CategoryComboBox.SelectedValue;
                 _objective.Priority = (Priority)PriorityComboBox.SelectedIndex;
 
+                // просто вызываем сохранение изменений так как в objectivew находится экземпляр изз бд
                 _ctx.SaveChanges();
                 this.Close();
             }
