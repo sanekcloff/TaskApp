@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Windows;
+using System.Windows.Input;
 using TaskApp.Context;
 using TaskApp.Models;
+
 
 namespace TaskApp.Views
 {
@@ -14,7 +16,7 @@ namespace TaskApp.Views
         public GeneralWindow()
         {
             InitializeComponent();
-            _ctx = new AppDbContext(); 
+            _ctx = new AppDbContext();
             ReloadList();
         }
         //мето для присовения листу на форме значений из БД
@@ -25,15 +27,30 @@ namespace TaskApp.Views
         // метод для открытия окна добвления
         private void AddObjectiveButton_Click(object sender, RoutedEventArgs e)
         {
-            new ObjectiveManageWindow(null,_ctx).ShowDialog();
+            new ObjectiveManageWindow(null, _ctx).ShowDialog();
             ReloadList();
         }
 
         // метод для открытия окна редактирования
-        private void ListViewItem_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            new ObjectiveManageWindow((Objective)ObjectivesListView.SelectedItem,_ctx).ShowDialog();
+            new ObjectiveManageWindow((Objective)ObjectivesListView.SelectedItem, _ctx).ShowDialog();
             ReloadList();
+        }
+
+        private void ListViewItem_KeyDown(object sender, KeyEventArgs e)
+        {
+            var selectedItem = (Objective)ObjectivesListView.SelectedItem;
+            if (e.Key == Key.Delete && selectedItem != null)
+            {
+                var result = MessageBox.Show("Действительно удалить?", "Подтвердить", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    _ctx.Objectives.Remove(selectedItem);
+                    _ctx.SaveChanges();
+                    ReloadList();
+                }
+            }
         }
     }
 }

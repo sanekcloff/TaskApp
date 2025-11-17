@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskApp.Views"
         mc:Ignorable="d"
-        Title="GeneralWindow" Height="450" Width="800">
+        Title="Окно просмотра задач" Height="450" Width="800" Icon="/Resources/Assets/Icon.png" FontFamily="Comic Sans MS" Background="{StaticResource WindowPrimaryColor}">
     <!--Элемент для расположения объектов по столбацм и строкам-->
     <Grid>
 
@@ -15,24 +15,46 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <!--Стак панель для размешения внутри определённого количества элементов друг за другом по горизонтали-->
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5">
 
-            <!--Метод для вызова окна добавления-->
-            <Button x:Name="AddObjectiveButton" Content="Добавить" Click="AddObjectiveButton_Click"/>
+        <Grid Background="{StaticResource WindowSecondaryColor}">
+            <!--Стак панель для размешения внутри определённого количества элементов друг за другом по горизонтали-->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5">
 
-        </StackPanel>
+                <!--????? ??? ?????? ???? ??????????-->
+                <Button x:Name="AddObjectiveButton" Content="Добавить" Click="AddObjectiveButton_Click" Style="{StaticResource ButtonStyle1}"/>
+
+            </StackPanel>
+        </Grid>
+
 
         <!--Элемент для отображения списка задач (objectives)-->
-        <ListView x:Name="ObjectivesListView" Margin="10" Grid.Row="1">
+        <ListView x:Name="ObjectivesListView" Margin="10" Grid.Row="1" Background="Transparent" BorderThickness="0">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <!--Событие при нажатии на элемент в списке-->
                     <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
+                    <EventSetter Event="KeyDown" Handler="ListViewItem_KeyDown"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListViewItem">
+
+                                <Border CornerRadius="8" Margin="5" Background="{StaticResource ButtonSecondaryColor}">
+
+                                    <Grid>
+                                        
+                                        <TextBlock Text="{Binding Title}"/>
+
+                                    </Grid>
+
+                                </Border>
+
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>
 
     </Grid>
-    
+
 </Window>

@@ -88,7 +88,7 @@ namespace TaskApp.Views
                 _objective.Description = DescriptionTextBox.Text;
                 _objective.IsExecuted = IsExecutedCheckBox.IsChecked!.Value;
                 _objective.DateOfEnd = DateOfEndDatePicker.SelectedDate!.Value;
-                _objective.CategoryId = ((Category)CategoryComboBox.SelectedValue).Id;
+                _objective.Category = ((Category)CategoryComboBox.SelectedValue);
                 _objective.Priority = (Priority)PriorityComboBox.SelectedIndex;
 
                 // так как создавался новый экземпляр то вызываем метод Add

@@ -66,5 +66,10 @@ namespace TaskApp.Views
             // Если ответы не совпали то выводим всплывающее окно с уведомление о неверном ответе
             else MessageBox.Show("Не верно!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
+
+        private void LoginButton_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) LoginButton_Click(sender,e);
+        }
     }
 }

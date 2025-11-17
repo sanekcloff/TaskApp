@@ -4,6 +4,14 @@
              xmlns:local="clr-namespace:TaskApp"
              StartupUri="Views/LoginWindow.xaml">
     <Application.Resources>
-         
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Dictionaries/AppColors.xaml"/>
+                <ResourceDictionary Source="/Resources/Dictionaries/ButtonResourceDictionary.xaml"/>
+                <ResourceDictionary Source="/Resources/Dictionaries/TextBoxResourceDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
     </Application.Resources>
 </Application>
